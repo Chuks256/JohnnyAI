@@ -1,5 +1,6 @@
 
 require("dotenv").config();
+
 const OpenAiModule=require("openai")
 const MemoryHandler=new Map();
 const {LLM_rules} = require("../config/llm_rules");
@@ -44,8 +45,10 @@ class routeHandler{
         try{
             const openai_module = new OpenAiModule({
                 baseURL: 'https://openrouter.ai/api/v1',
-                apiKey:"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" || process.env.OPEN_ROUTER_API_KEY
+                apiKey: process.env.OPEN_ROUTER_API_KEY
                })
+
+               console.log(process.env.OPEN_ROUTER_API_KEY)
 
             const llm_model = await openai_module.chat.completions.create({
                 model:"mistralai/mistral-7b-instruct",
