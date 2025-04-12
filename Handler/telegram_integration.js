@@ -7,7 +7,7 @@ const TelegramBot = require('node-telegram-bot-api');
 // define functions and api key 
 const LLM_ModelHandler = new routeHandler();
 const TOKEN ="8103257952:AAHgCdU4pywzah_6_aL8GFO5u83xdO1PYMk" ;
-const bot = new TelegramBot(TOKEN, { polling: true });
+const bot = new TelegramBot(TOKEN, { polling: false });
 
 
 class Telegram_integration{
@@ -57,6 +57,23 @@ class Telegram_integration{
         })
 
     }
+
+    async startProcessUpdate(req,res){
+        await bot.processUpdate(req.body); // Process incoming update
+        await res.sendStatus(200);
+    }
+    
+         // Set webhook on startup
+       async setupWebhook() {
+        const token=process.env.TELEGRAM_TOKEN
+        try {
+          await bot.setWebHook(`${process.env.PUBLIC_URL}/webhook/${token}`);
+          console.log('✅ Webhook set at:', `${process.env.PUBLIC_URL}/webhook/${token}`);
+        } catch (err) {
+          console.error('⚠️ Webhook setup failed:', err.message);
+        }
+      };
+
 }
 
 

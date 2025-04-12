@@ -1,4 +1,5 @@
 // define modules 
+require("dotenv").config();
 const expressModule = require("express");
 const app=expressModule();
 const BodyParser=require("body-parser");
@@ -27,9 +28,17 @@ app.get("/api/isServerOnline",async(req,res)=>{
     await res.status(200).json({msg:"[+] Server currently active [+]"})
 })
 
+
+// Webhook endpoint
+app.post(`/webhook/${process.env.TELEGRAM_TOKEN}`, new Telegram_integration().startProcessUpdate);
+  
+
 app.post('/api/getUserPrompt',route_handler.processUserPrompt)
 
 
 app.listen(port ,async()=>{
 console.log(`[${timestamp}] Api Actively Server running....`)
+if(process.env.NODE_ENV==="production"){
+    await new Telegram_integration().setupWebhook()
+}
 });
