@@ -7,7 +7,7 @@ const port =process.env.PORT || 3056;
 const {Telegram_integration} = require("./Handler/telegram_integration");
 const {routeHandler}=require("./Handler/route_handler");
 const timestamp = Date.now();
-const {XIntegration} = require("./Handler/X_integration");
+// const {XIntegration} = require("./Handler/X_integration");
 
 // define middlewares 
 app.use(CorsModule());
@@ -20,7 +20,7 @@ const route_handler = new routeHandler();
 
 new Telegram_integration().initialise_telegram_bot(); // bot should start receiving and sending messages every 7 hours 
 // new XIntegration().startListeningForTags(); // bot should listen for tags 
-new XIntegration().startTweeting() // bot should start tweeting every 7 hours 
+// new XIntegration().startTweeting() // bot should start tweeting every 7 hours 
 
 // define api route 
 app.get("/api/isServerOnline",async(req,res)=>{
