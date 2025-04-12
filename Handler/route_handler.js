@@ -48,7 +48,6 @@ class routeHandler{
                 apiKey: process.env.OPEN_ROUTER_API_KEY
                })
 
-               console.log(process.env.OPEN_ROUTER_API_KEY)
 
             const llm_model = await openai_module.chat.completions.create({
                 model:"mistralai/mistral-7b-instruct",
@@ -78,8 +77,5 @@ class routeHandler{
 
 }
 
-
-let l=new routeHandler().Johnny_model_function('rrrr','hello')
-console.log(l)
 
 module.exports={routeHandler}
