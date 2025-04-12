@@ -6,7 +6,7 @@ const TelegramBot = require('node-telegram-bot-api');
 
 // define functions and api key 
 const LLM_ModelHandler = new routeHandler();
-const TOKEN = process.env.TELEGRAM_GLOBAL_BOT_API_KEY || "8103257952:AAHgCdU4pywzah_6_aL8GFO5u83xdO1PYMk";
+const TOKEN ="8103257952:AAHgCdU4pywzah_6_aL8GFO5u83xdO1PYMk" ;
 const bot = new TelegramBot(TOKEN, { polling: true });
 
 
