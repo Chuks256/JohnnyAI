@@ -34,6 +34,7 @@ class Telegram_integration{
                 if(msg.reply_to_message){
                 bot.sendChatAction(userId,"typing");
                 const LLm_response = await LLM_ModelHandler.Johnny_model_function(userId,msg.text);
+                console.log(LLm_response)
                 setTimeout(async () => {
                     await bot.sendMessage(userId, `${LLm_response}`,{
                         reply_to_message_id:msg.reply_to_message.message_id

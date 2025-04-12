@@ -43,10 +43,10 @@ class routeHandler{
         try{
             const openai_module = new OpenAiModule({
                 baseURL: 'https://openrouter.ai/api/v1',
-                apiKey: "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" ,
+                apiKey:"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",
                })
-       
-               const llm_model = await openai_module.chat.completions.create({
+
+            const llm_model = await openai_module.chat.completions.create({
                 model:"mistralai/mistral-7b-instruct",
                 messages:getUserData.messages
                })
@@ -56,7 +56,7 @@ class routeHandler{
                return agent_response.content;
         }
         catch(exception){
-            console.log('Something went wrong')
+            console.log('Something went wrong',exception)
         }
     }
 
@@ -74,5 +74,8 @@ class routeHandler{
 
 }
 
+
+let l=new routeHandler().Johnny_model_function('rrrr','hello')
+console.log(l)
 
 module.exports={routeHandler}
