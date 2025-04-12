@@ -43,7 +43,7 @@ class routeHandler{
         try{
             const openai_module = new OpenAiModule({
                 baseURL: 'https://openrouter.ai/api/v1',
-                apiKey:"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",
+                apiKey:"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",
                })
 
             const llm_model = await openai_module.chat.completions.create({
